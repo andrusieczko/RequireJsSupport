@@ -1,0 +1,7 @@
+[{
+    "keys": ["super+shift+o"],
+    "command": "require_js_support"
+},{
+  "keys": ["super+shift+u"],
+  "command": "clean_up_require"
+}]
