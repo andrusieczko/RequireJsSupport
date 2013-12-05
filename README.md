@@ -9,7 +9,10 @@ Use:
 `ctrl+shift+o`: choose an imported module and insert it in the selection place
 `ctrl+shift+u`: clean up your define
 
+----
+
+Right-click on the .js file and choose *Move RequreJs Module* to use the main functionality.
 
 ----
 
-It's not finished - it works but it's just one-evening try on the topic :)
+# Supports only NSN NetEng internal solutions for now.

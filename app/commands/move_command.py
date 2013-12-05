@@ -1,8 +1,10 @@
-import sublime_plugin
-from app.core.require_file_parser import RequireFileParser
+import sublime, sublime_plugin
 
-from app.core.define_utils import DefineUtils
-from app.core.file_utils import FileUtils
+from app.core.require_file_parser import RequireFileParser
+from app.core.settings import Settings
+
+from app.utils.define_utils import DefineUtils
+from app.utils.file_utils import FileUtils
 
 import shutil
 
@@ -22,6 +24,7 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
   def move(self, oldFile, newFile):
     defineUtils = DefineUtils()
     fileUtils = FileUtils()
+    settings = Settings()
 
     oldFile = self.getModuleId(oldFile)
     newFile = self.getModuleId(newFile)
@@ -29,10 +32,10 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
     print 'original_name: ' + oldFile
     print 'new_file_name: ' + newFile
 
-    dir_name = 'D:/userdata/andrusie/htdocs/ckdb/src/Nsn/NetEng'
+    projectDir = settings.getProjectDir()
     extToFind = '.js'
     
-    files = fileUtils.get_javascript_files(dir_name, extToFind)
+    files = fileUtils.get_javascript_files(projectDir, extToFind)
 
     changedFiles = []
     for path in files:

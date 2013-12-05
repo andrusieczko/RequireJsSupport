@@ -1,4 +1,5 @@
 import sublime, sublime_plugin
+
 from app.core.require_file_parser import RequireFileParser
 
 class UseImportCommand(RequireFileParser, sublime_plugin.TextCommand):

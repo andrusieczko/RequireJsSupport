@@ -1,6 +1,8 @@
 import sublime_plugin, sublime
+
 from app.core.require_file_parser import RequireFileParser
-from app.core.define_utils import DefineUtils
+
+from app.utils.define_utils import DefineUtils
 
 class CleanUpCommand(RequireFileParser, sublime_plugin.TextCommand):
   def perform(self, edit):
