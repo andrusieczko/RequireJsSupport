@@ -1,0 +1,8 @@
+[{
+  "caption": "Move RequireJs Module",
+  "command": "move_require_js_module",
+  "args": {
+    "cmd": ["dir"],
+    "file": "${packages}"
+  }
+}]

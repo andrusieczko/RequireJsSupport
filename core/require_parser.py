@@ -1,7 +1,7 @@
 import sublime, re
 
 class RequireParser:
-  moduleNamePattern = 'a-zA-Z@/-_#$'
+  moduleNamePattern = 'a-zA-Z@/-_#$!\+#0-9\-\.'
   defineSeparators = ' \t\r\n,'
 
   def getContent(self):
@@ -19,7 +19,7 @@ class RequireParser:
     return imports
 
   def getDefineArgs(self, content):
-    m = re.search('function\(([^\)]*)\)', content, re.MULTILINE)
+    m = re.search('function[ a-zA-Z]*\(([^\)]*)\)', content, re.MULTILINE)
     defines = m.group(1)
     definesList = re.split('[' + self.defineSeparators + ']*', defines, re.MULTILINE)
     return filter(None, definesList)

@@ -3,5 +3,5 @@
 	"command": "require_js_support"
 },{
   "keys": ["ctrl+shift+u"],
-  "command": "clean_up_require"
+  "command": "my_clean_up"
 }]
