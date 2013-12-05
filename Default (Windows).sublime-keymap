@@ -1,7 +1,7 @@
 [{
 	"keys": ["ctrl+shift+o"],
-	"command": "require_js_support"
+	"command": "use_import"
 },{
   "keys": ["ctrl+shift+u"],
-  "command": "my_clean_up"
+  "command": "clean_up"
 }]

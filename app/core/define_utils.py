@@ -21,7 +21,7 @@ class DefineUtils:
     beggining = content[:defineObj['startIndex']]
     rest = content[defineObj['endIndex']:]
 
-    return (beggining + define + rest, define)
+    return beggining + define + rest
 
   def wrap(self, text, sep="'"):
     return sep + text + sep

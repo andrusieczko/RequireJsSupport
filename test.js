@@ -4,15 +4,12 @@ define(['module','$','_','@CommonBundle/nsn/ViewsBuilder',
 
   '@CommonBundle/utils/view/commonViewUtils',
 
-'@AppBundle/view/FilteringSidenavParamView',
-
-'#bootstrap'],
+'@AppBundle/view/FilteringSidenavParamView', '#bootstrap'],
 
 	function(module, $, _, ViewsBuilder, 
 
 
     commonViewUtils, MyNewView, FilteringSidenavParamView) {
-asdasdasd
   
 
 });
