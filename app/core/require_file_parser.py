@@ -1,5 +1,7 @@
 import re
 
+from app.utils.file_utils import FileUtils
+
 class RequireFileParser:
   moduleNamePattern = 'a-zA-Z@/-_#$!\+#0-9\-\.'
   defineSeparators = ' \t\r\n,'
@@ -7,7 +9,8 @@ class RequireFileParser:
   exceptions = []
 
   def parse(self, path, moduleId):
-    content = self.getContent(path)
+    fileUtils = FileUtils()
+    content = fileUtils.getContent(path)
     defineStartIndex, defineEndIndex = self.getDefineRegion(content)
 
     defineContent = content[defineStartIndex:defineEndIndex]
@@ -15,12 +18,6 @@ class RequireFileParser:
     defineObj = self.createDefineObject(defineContent, moduleId, defineStartIndex, defineEndIndex)
 
     return (content, defineObj)
-
-  def getContent(self, path):
-    fileToBeEdited = open(path)
-    content = fileToBeEdited.read()
-    fileToBeEdited.close()
-    return content
 
   def createDefineObject(self, defineContent, moduleId, defineStartIndex, defineEndIndex):
     imports = []

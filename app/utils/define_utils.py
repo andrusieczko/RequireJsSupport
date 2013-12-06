@@ -26,12 +26,16 @@ class DefineUtils:
     beggining = content[:defineObj['startIndex']]
     rest = content[defineObj['endIndex']:]
 
-    if (len(toBeRenamedList) > 0):
-      for toBeRenamed in toBeRenamedList:
-        variableToBeRenamedPattern = self.getJsVariablePattern(toBeRenamed['oldName'])
-        rest = re.sub(variableToBeRenamedPattern, r"\1" + toBeRenamed['newName'] + r"\3", rest)
+    rest = self.renameVariables(rest, toBeRenamedList)
 
     return beggining + define + rest
 
   def wrap(self, text, sep="'"):
     return sep + text + sep
+
+  def renameVariables(self, content, toBeRenamedList):
+    if (len(toBeRenamedList) > 0):
+      for toBeRenamed in toBeRenamedList:
+        variableToBeRenamedPattern = self.getJsVariablePattern(toBeRenamed['oldName'])
+        content = re.sub(variableToBeRenamedPattern, r"\1" + toBeRenamed['newName'] + r"\3", content)
+    return content

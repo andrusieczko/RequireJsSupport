@@ -7,3 +7,6 @@ class Settings:
 
   def getProjectDir(self):
     return self.window.folders()[0] + self.settings.get('project-dir')
+
+  def getPhpProjectDir(self):
+    return self.window.folders()[0] + self.settings.get('php-project-dir')

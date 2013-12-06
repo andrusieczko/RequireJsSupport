@@ -35,7 +35,7 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
     projectDir = settings.getProjectDir()
     extToFind = '.js'
     
-    files = fileUtils.get_javascript_files(projectDir, extToFind)
+    files = fileUtils.get_files(projectDir, extToFind)
 
     changedFiles = []
     for path in files:
@@ -71,3 +71,7 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
 
   def empty(self, new_file_name):
     pass
+
+  def isEnabled(self, view, args):
+    print view.file_name()
+    return False
