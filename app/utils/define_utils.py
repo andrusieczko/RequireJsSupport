@@ -1,6 +1,11 @@
+import re
+
 class DefineUtils:
 
-  def cleanUpDefine(self, content, defineObj):
+  def getJsVariablePattern(self, variableName):
+    return '([^\.])(' + variableName + ')([^\w])'
+
+  def cleanUpDefine(self, content, defineObj, toBeRenamedList = []):
     wrappedImports = map(self.wrap, defineObj['imports'])
     imports = ", ".join(wrappedImports)
     args = ", ".join(defineObj['args'])
@@ -20,6 +25,11 @@ class DefineUtils:
 
     beggining = content[:defineObj['startIndex']]
     rest = content[defineObj['endIndex']:]
+
+    if (len(toBeRenamedList) > 0):
+      for toBeRenamed in toBeRenamedList:
+        variableToBeRenamedPattern = self.getJsVariablePattern(toBeRenamed['oldName'])
+        rest = re.sub(variableToBeRenamedPattern, r"\1" + toBeRenamed['newName'] + r"\3", rest)
 
     return beggining + define + rest
 

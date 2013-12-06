@@ -1,4 +1,4 @@
-import sublime, sublime_plugin
+import sublime_plugin
 
 from app.core.require_file_parser import RequireFileParser
 from app.core.settings import Settings
@@ -24,7 +24,7 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
   def move(self, oldFile, newFile):
     defineUtils = DefineUtils()
     fileUtils = FileUtils()
-    settings = Settings()
+    settings = Settings(self.view.window())
 
     oldFile = self.getModuleId(oldFile)
     newFile = self.getModuleId(newFile)
@@ -45,10 +45,19 @@ class MoveRequireJsModuleCommand(RequireFileParser, sublime_plugin.TextCommand):
 
       if oldFile in defineObj['imports']:
         index = defineObj['imports'].index(oldFile)
-        defineObj['imports'][index] = newFile
-        defineObj['args'][index] = newFile.split('/')[-1:][0]
 
-        newContent = defineUtils.cleanUpDefine(content, defineObj)
+        oldName = defineObj['args'][index]
+        newName = newFile.split('/')[-1:][0]
+        
+        toBeRenamed = [{
+            'oldName': oldName,
+            'newName': newName
+        }]
+
+        defineObj['imports'][index] = newFile
+        defineObj['args'][index] = newName
+
+        newContent = defineUtils.cleanUpDefine(content, defineObj, toBeRenamed)
         
         fileToBeEdited = open(path, 'w+')
         fileToBeEdited.write(newContent)

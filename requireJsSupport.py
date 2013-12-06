@@ -1,3 +1,5 @@
+import sublime, sublime_plugin
+
 from app.commands.clean_up_command import CleanUpCommand
 from app.commands.use_import_command import UseImportCommand
 from app.commands.move_command import MoveRequireJsModuleCommand
