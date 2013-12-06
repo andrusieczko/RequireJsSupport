@@ -11,7 +11,9 @@ Use:
 
 ----
 
-Right-click on the .js file and choose *Move RequreJs Module* to use the main functionality.
+Right-click on the .js file and choose
+* *Move RequreJs Module* to move the .js file
+* *Move PHP File* to move PHP file
 
 ----
 
