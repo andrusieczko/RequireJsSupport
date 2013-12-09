@@ -4,4 +4,7 @@
 },{
   "keys": ["ctrl+shift+u"],
   "command": "clean_up"
-}]
+},{
+  "keys": ["f3"],
+  "command": "go_to_js_class"
+  }]

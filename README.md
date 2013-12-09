@@ -1,7 +1,7 @@
 RequireJsSupport
 =========================
 
-Plugin to Sublime Text that supports using RequireJS
+Plugin to Sublime Text that supports using RequireJS and PHP files
 
 ----
 
@@ -11,7 +11,7 @@ Use:
 
 ----
 
-Right-click on the .js file and choose
+Right-click on the .js or .php file and choose
 * *Move RequreJs Module* to move the .js file
 * *Move PHP File* to move PHP file
 
